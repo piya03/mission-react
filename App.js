@@ -1,3 +1,5 @@
+import React from "react";
+import ReactDOM from "react-dom/client";
 {
   /* <div id="parent">
   <div id='child'>
@@ -8,8 +10,8 @@
 
 const parent = React.createElement("div", { id: "parent" }, [
   React.createElement("div", { id: "child" }, [
-    React.createElement("h1", {}, "I am H1 tag"),
-    React.createElement("h2", {}, "I am H2 tag"),
+    React.createElement("h1", {}, "I am H1 tag j m m m"),
+    React.createElement("h2", {}, "I am H2 b ms m tag"),
   ]),
   React.createElement("div", { id: "child2" }, [
     React.createElement("h1", {}, "I am H1 tag"),
@@ -21,6 +23,6 @@ const parent = React.createElement("div", { id: "parent" }, [
 //   { id: "heading", xyz: "abc" },
 //   "Hello world react m"
 // );
-console.log(parent, "parentparent");
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(parent);

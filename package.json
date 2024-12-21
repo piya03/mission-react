@@ -1,0 +1,29 @@
+{
+  "name": "Mission React",
+  "version": "1.0.0",
+  "description": "This is mission react",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/piya03/mission-react.git"
+  },
+  "keywords": [
+    "react"
+  ],
+  "author": "priyanka",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/piya03/mission-react/issues"
+  },
+  "homepage": "https://github.com/piya03/mission-react#readme",
+  "devDependencies": {
+    "parcel": "^2.13.3",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  }
+}
