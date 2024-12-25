@@ -1,28 +1,22 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-{
-  /* <div id="parent">
-  <div id='child'>
-    <h1>I am H1 tag</h1>
-  </div>
-</div> */
-}
 
-const parent = React.createElement("div", { id: "parent" }, [
-  React.createElement("div", { id: "child" }, [
-    React.createElement("h1", {}, "I am H1 tag j m m m"),
-    React.createElement("h2", {}, "I am H2 b ms m tag"),
-  ]),
-  React.createElement("div", { id: "child2" }, [
-    React.createElement("h1", {}, "I am H1 tag"),
-    React.createElement("h2", {}, "I am H2 tag"),
-  ]),
-]);
-// const heading = React.createElement(
-//   "h1",
-//   { id: "heading", xyz: "abc" },
-//   "Hello world react m"
-// );
+// React.createElement()
+// JSX (transpiled before it reaches the JS) - PARCEL - Babel
+// JSX => React.createElement => ReactElement-JS Object +> HTMLElement(render)
+const jsxHeading = <h1 id="heading">Hello React JSX</h1>;
 
+const HeadingComponent = () => {
+  return (
+    <div>
+      <div>hello</div>
+      <h1> {console.log("gdhgghh")}</h1>
+    </div>
+  );
+};
+//
+console.log(jsxHeading, "jsxHeadingjsxHeading");
+const heading = React.createElement("H1", { id: "heading" }, "Mission react");
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(parent);
+console.log(heading, "headingheading");
+root.render(<HeadingComponent />);
