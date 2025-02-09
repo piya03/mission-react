@@ -19,3 +19,28 @@
 - Host your app to HTTPS
 - Tree Shaking (removed unused code)
 - Different dev and prod bundles (prod build make little bit more time because need some more optimization for production)
+
+/\*\*
+
+- Header
+- - logo
+- - nav bar
+- Body
+- - Searchbar
+- - CardContainer
+-      -RestaurantCard
+-          -
+- Footer
+- - Link
+- - Copyright
+- - Address
+- - Contact
+    \*/
+
+    2 types of export/import and named
+    Default Export/import
+
+    # react hook
+
+    normal JS utility function
+    useState() - gives you super powerful react state
