@@ -5,7 +5,7 @@ const Footer = () => {
   useEffect(() => {
     console.log("i m footer useEffect")
   }, [])
-  return <div>Footer</div>;
+  return <div className="text-3xl font-bold bg-amber-800 underline">Footer</div>;
 };
 
 export default Footer;

@@ -9,7 +9,7 @@ const Header = () => {
   const [btnNameReact, setBtnNameReact] = useState("Login")
   return (
     <div className="header">
-      <Contact />
+
       <div className="logo-container">
         <img
           className="logo"
@@ -41,8 +41,8 @@ const Header = () => {
               Grocery
             </Link>
           </li>
-          <li>
-            <Link to='/cart'>
+          <li className="">
+            <Link>
               Cart
             </Link>
           </li>

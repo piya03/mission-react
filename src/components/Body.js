@@ -45,7 +45,7 @@ const Body = () => {
   return (
     <div className="body">
       <div className="filter">
-        <input
+        <input className="border-1"
           value={search}
           onChange={(e) => {
             setSearch(e.target.value);
