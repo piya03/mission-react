@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import Contact from './Contact';
+import useOnlineStatus from "../hooks/useOnlineStatus";
 
-const Header = () => {
+const header = () => {
+  const onlineStatus = useOnlineStatus()
+  console.log("hello i m child")
+  useEffect(() => {
+    console.log("hello i m child useEffect")
+  }, [])
+  const [btnNameReact, setBtnNameReact] = useState("Login")
   return (
     <div className="header">
+      <Contact />
       <div className="logo-container">
         <img
           className="logo"
@@ -12,14 +22,35 @@ const Header = () => {
       </div>
       <div className="nav-items">
         <ul>
-          <li>Home</li>
-          <li>About Us</li>
-          <li>Contact Us</li>
-          <li>Cart</li>
+          <li>Online Status : {onlineStatus ? "✅" : "🔴"} </li>
+          <li>
+            <Link to='/'>
+              Home
+            </Link>
+          </li>
+          <li>
+            <Link to='/about'>
+              About Us
+            </Link>
+          </li>
+
+          <li>
+            <Link to='/contact'>
+              Contact Us
+            </Link>
+          </li>
+          <li>
+            <Link to='/cart'>
+              Cart
+            </Link>
+          </li>
+          <button className="login" onClick={() => {
+            btnNameReact === 'Login' ? setBtnNameReact("Logout") : setBtnNameReact("Login")
+          }}>{btnNameReact}</button>
         </ul>
       </div>
-    </div>
+    </div >
   );
 };
 
-export default Header;
+export default header;

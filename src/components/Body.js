@@ -1,6 +1,7 @@
 import react, { useEffect, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
-import { resList } from "../utils/mockData";
+import { Link } from 'react-router-dom'
+import useOnlineStatus from '../hooks/useOnlineStatus'
 
 const Body = () => {
   // local state variable
@@ -9,6 +10,9 @@ const Body = () => {
   // to keep the searched data
   const [filterRes, setFilterRes] = useState();
   const [search, setSearch] = useState("");
+  const online = useOnlineStatus()
+  console.log("🚀 ~ Body ~ online:", online)
+
   const fetchData = async () => {
     let url =
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9352403&lng=77.624532&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
@@ -32,7 +36,11 @@ const Body = () => {
   useEffect(() => {
     fetchData();
   }, []);
-  console.log("hi ++++++++++++++++++++++");
+
+
+  if (online === false) {
+    return <h1>You are offline. Please check your internet connection</h1>
+  }
 
   return (
     <div className="body">
@@ -60,11 +68,13 @@ const Body = () => {
         <button
           className="filter-btn"
           onClick={() => {
-            const filteredList = listOfRestaurant.filter((each) => {
-              return each.info.avgRating > 4;
-            });
 
-            setListOfRestaurant(filteredList);
+            const filteredList = listOfRestaurant.filter((each) => {
+              return each.info.avgRating > 4.5;
+            });
+            console.log("🚀 ~ filteredList ~ filteredList:", filteredList)
+
+            setFilterRes(filteredList);
           }}
         >
           Top Rated Restaurants
@@ -73,10 +83,17 @@ const Body = () => {
       <div className="res-container">
         {/* // props are normal argument to the function */}
         {filterRes?.map((each) => {
-          return <RestaurantCard id={each?.info?.id} resData={each} />;
+          return (
+            <div key={each?.info?.id}>
+              <Link to={`./restaurants/${each?.info?.id}`} >
+                <RestaurantCard
+                  id={each?.info?.id} resData={each} />;
+              </Link >
+            </div>
+          )
         })}
       </div>
-    </div>
+    </div >
   );
 };
 export default Body;
