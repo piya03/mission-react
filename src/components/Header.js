@@ -3,12 +3,9 @@ import { Link } from "react-router-dom";
 import Contact from './Contact';
 import useOnlineStatus from "../hooks/useOnlineStatus";
 
-const header = () => {
+const Header = () => {
   const onlineStatus = useOnlineStatus()
-  console.log("hello i m child")
-  useEffect(() => {
-    console.log("hello i m child useEffect")
-  }, [])
+
   const [btnNameReact, setBtnNameReact] = useState("Login")
   return (
     <div className="header">
@@ -40,6 +37,11 @@ const header = () => {
             </Link>
           </li>
           <li>
+            <Link to='/grocery'>
+              Grocery
+            </Link>
+          </li>
+          <li>
             <Link to='/cart'>
               Cart
             </Link>
@@ -53,4 +55,4 @@ const header = () => {
   );
 };
 
-export default header;
+export default Header;
