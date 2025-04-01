@@ -1,17 +1,18 @@
 import react, { useEffect, useState } from "react";
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withPromotedLabel } from "./RestaurantCard";
 import { Link } from 'react-router-dom'
 import useOnlineStatus from '../hooks/useOnlineStatus'
 
 const Body = () => {
   // local state variable
   const [listOfRestaurant, setListOfRestaurant] = useState();
-  console.log("🚀 ~ Body ~ listOfRestaurant:", listOfRestaurant);
   // to keep the searched data
   const [filterRes, setFilterRes] = useState();
+  console.log("🚀 ~ Body ~ filterRes:", filterRes)
   const [search, setSearch] = useState("");
   const online = useOnlineStatus()
-  console.log("🚀 ~ Body ~ online:", online)
+  const RestaurantCardLabel = withPromotedLabel(RestaurantCard)
+
 
   const fetchData = async () => {
     let url =
@@ -84,12 +85,12 @@ const Body = () => {
         {/* // props are normal argument to the function */}
         {filterRes?.map((each) => {
           return (
-            <div key={each?.info?.id}>
-              <Link to={`./restaurants/${each?.info?.id}`} >
-                <RestaurantCard
-                  id={each?.info?.id} resData={each} />;
-              </Link >
-            </div>
+            <Link to={`./restaurants/${each?.info?.id}`} key={each?.info?.id}>
+              {each.info.avgRating > 4.5 ?
+                <RestaurantCardLabel resData={each} />
+                : <RestaurantCard resData={each} />
+              }
+            </Link >
           )
         })}
       </div>

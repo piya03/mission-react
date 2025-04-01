@@ -1,5 +1,6 @@
 import React from "react";
 import { CDN_URL } from "../utils/constant";
+
 export const RestaurantCard = ({ resData }) => {
   const { info } = resData;
   const { name, cuisines, costForTwo, avgRating, sla, cloudinaryImageId } =
@@ -16,4 +17,16 @@ export const RestaurantCard = ({ resData }) => {
   );
 };
 
+
+// HOC
+export const withPromotedLabel = (RestaurantCard) => {
+  return (props) => {
+    return (
+      <div>
+        <label className="bg-black p-2 text-white">Promoted</label>
+        <RestaurantCard {...props} />
+      </div>
+    )
+  }
+}
 export default RestaurantCard;
