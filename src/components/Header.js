@@ -49,7 +49,7 @@ const Header = () => {
               Cart
             </Link>
           </li>
-          <li>{user.loggedInUser}</li>
+          <li>{user.name}</li>
           <button className="login" onClick={() => {
             btnNameReact === 'Login' ? setBtnNameReact("Logout") : setBtnNameReact("Login")
           }}>{btnNameReact}</button>

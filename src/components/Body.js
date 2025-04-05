@@ -1,7 +1,8 @@
-import react, { useEffect, useState } from "react";
+import react, { useEffect, useState, useContext } from "react";
 import RestaurantCard, { withPromotedLabel } from "./RestaurantCard";
 import { Link } from 'react-router-dom'
 import useOnlineStatus from '../hooks/useOnlineStatus'
+import UserContext from "../context/UserContext";
 
 const Body = () => {
   // local state variable
@@ -11,6 +12,9 @@ const Body = () => {
   const [search, setSearch] = useState("");
   const online = useOnlineStatus()
   const RestaurantCardLabel = withPromotedLabel(RestaurantCard)
+  const userInfo = useContext(UserContext)
+  const { loggedInUser, setName, name } = userInfo || {}
+  console.log("🚀 ~ Body ~ d:", userInfo)
 
   const newAPI = 'https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9352403&lng=77.624532&collection=80424&sortBy=&filters=&offset=0&page_type=null'
   const oldAPI = "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9352403&lng=77.624532&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
@@ -76,6 +80,7 @@ const Body = () => {
         >
           Top Rated Restaurants
         </button>
+        <input className="border-1" value={name} onChange={(e) => setName(e.target.value)} />
       </div>
       <div className="res-container">
         {/* // props are normal argument to the function */}

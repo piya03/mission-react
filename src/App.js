@@ -17,19 +17,17 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 
 
 const App = () => {
-  const [name, setName] = useState("Anil")
+  const [name, setName] = useState("")
   return (
     <UserContext.Provider value={{
       loggedInUser: "Priyanka Nishad",
       name,
+      setName
     }}>
       <div>
-        <UserContext.Provider value={{
-          loggedInUser: "Vikraant",
-          name,
-        }}>
-          <Header />
-        </UserContext.Provider>
+
+        <Header />
+
         <Outlet />
         <Footer />
       </div>
