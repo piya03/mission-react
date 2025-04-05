@@ -3,8 +3,9 @@ import React, { useState } from 'react';
 import ItemList from './ItemList';
 
 function RestaurantCategories(props) {
+  const { each, setActive, showItem } = props
+  const [single, setSingle] = useState(showItem)
 
-  const { each, active, i, setActive, showItem } = props
   const itemInfo = each?.card?.card
 
 
@@ -14,10 +15,10 @@ function RestaurantCategories(props) {
         <span className="text-xl font-bold">{itemInfo?.title} ({itemInfo?.itemCards?.length || 0})</span>
         <span className='cursor-pointer' onClick={() => {
           setActive();
-
+          setSingle((prev) => !prev)
         }}>⬇️</span>
       </div>
-      {showItem && <div className="bg-gray-100 text-left">
+      {showItem && single && <div className="bg-gray-100 text-left">
         {itemInfo?.itemCards?.map((each) => <ItemList key={each.card.info.id} each={each} />)}
       </div>}
     </div>

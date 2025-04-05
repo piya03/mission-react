@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { useState, lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -6,6 +6,7 @@ import Footer from "./components/Footer";
 import Error from './components/Error';
 import Contact from "./components/Contact";
 import RestaurantMenu from "./components/RestaurantMenu";
+import UserContext from "./context/UserContext";
 
 const About = lazy(() => import("./components/About"))
 const GroceryLazyComponent = lazy(() => import('./components/Grocery'))
@@ -16,13 +17,23 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 
 
 const App = () => {
-
+  const [name, setName] = useState("Anil")
   return (
-    <div>
-      <Header />
-      <Outlet />
-      <Footer />
-    </div>
+    <UserContext.Provider value={{
+      loggedInUser: "Priyanka Nishad",
+      name,
+    }}>
+      <div>
+        <UserContext.Provider value={{
+          loggedInUser: "Vikraant",
+          name,
+        }}>
+          <Header />
+        </UserContext.Provider>
+        <Outlet />
+        <Footer />
+      </div>
+    </UserContext.Provider>
   );
 };
 function ErrorFallback() {

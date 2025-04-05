@@ -8,7 +8,6 @@ const Body = () => {
   const [listOfRestaurant, setListOfRestaurant] = useState();
   // to keep the searched data
   const [filterRes, setFilterRes] = useState();
-  console.log("🚀 ~ Body ~ filterRes:", filterRes)
   const [search, setSearch] = useState("");
   const online = useOnlineStatus()
   const RestaurantCardLabel = withPromotedLabel(RestaurantCard)
@@ -71,7 +70,6 @@ const Body = () => {
             const filteredList = listOfRestaurant.filter((each) => {
               return each.info.avgRating > 4.5;
             });
-            console.log("🚀 ~ filteredList ~ filteredList:", filteredList)
 
             setFilterRes(filteredList);
           }}

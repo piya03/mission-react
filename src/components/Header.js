@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import Contact from './Contact';
 import useOnlineStatus from "../hooks/useOnlineStatus";
+import UserContext from "../context/UserContext";
 
 const Header = () => {
   const onlineStatus = useOnlineStatus()
+  const user = useContext(UserContext)
+  console.log("🚀 ~ Header ~ user:", user)
 
   const [btnNameReact, setBtnNameReact] = useState("Login")
   return (
@@ -46,6 +49,7 @@ const Header = () => {
               Cart
             </Link>
           </li>
+          <li>{user.loggedInUser}</li>
           <button className="login" onClick={() => {
             btnNameReact === 'Login' ? setBtnNameReact("Logout") : setBtnNameReact("Login")
           }}>{btnNameReact}</button>

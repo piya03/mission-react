@@ -7,7 +7,6 @@ import RestaurantCategories from './RestaurantCategories';
 const RestaurantMenu = () => {
   const { resId } = useParams()
   const [active, setActive] = useState(0)
-  console.log("🚀 ~ active:", active)
   const { resInfo } = useRestaurantMenu(resId)
 
   const resData = resInfo?.cards[2]?.card?.card?.info || {}
