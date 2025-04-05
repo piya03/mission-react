@@ -13,17 +13,15 @@ const Body = () => {
   const online = useOnlineStatus()
   const RestaurantCardLabel = withPromotedLabel(RestaurantCard)
 
+  const newAPI = 'https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9352403&lng=77.624532&collection=80424&sortBy=&filters=&offset=0&page_type=null'
+  const oldAPI = "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9352403&lng=77.624532&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
 
   const fetchData = async () => {
-    let url =
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9352403&lng=77.624532&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
+    let url = oldAPI
+
     const data = await fetch(url);
     const json = await data.json();
-    console.log(
-      json?.data?.cards?.[1].card?.card?.gridElements?.infoWithStyle
-        ?.restaurants,
-      "json"
-    );
+
     setListOfRestaurant(
       json?.data?.cards?.[1]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants
