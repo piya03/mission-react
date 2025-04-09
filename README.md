@@ -44,3 +44,12 @@
 
     normal JS utility function
     useState() - gives you super powerful react state
+
+# redux toolkit
+
+- Install @reduxjs/toolkit and redux-redux
+- Build our store
+- Connect our store to our app
+- Create a slice(cartSlice)
+- Dispatch(action)
+- Selector

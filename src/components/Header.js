@@ -3,12 +3,15 @@ import { Link } from "react-router-dom";
 import Contact from './Contact';
 import useOnlineStatus from "../hooks/useOnlineStatus";
 import UserContext from "../context/UserContext";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const onlineStatus = useOnlineStatus()
   const user = useContext(UserContext)
-  console.log("🚀 ~ Header ~ user:", user)
 
+  // Subscribing to the store using Selector
+  const cartItem = useSelector((store) => store.cart.items)
+  console.log(cartItem, "cartItem")
   const [btnNameReact, setBtnNameReact] = useState("Login")
   return (
     <div className="header">
@@ -44,9 +47,9 @@ const Header = () => {
               Grocery
             </Link>
           </li>
-          <li className="">
-            <Link>
-              Cart
+          <li className="font-bold">
+            <Link to='/cart'>
+              Cart ({cartItem?.length} Items)
             </Link>
           </li>
           <li>{user.name}</li>

@@ -7,7 +7,11 @@ import Error from './components/Error';
 import Contact from "./components/Contact";
 import RestaurantMenu from "./components/RestaurantMenu";
 import UserContext from "./context/UserContext";
+import Cart from './components/Cart';
 
+// redux
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
 const About = lazy(() => import("./components/About"))
 const GroceryLazyComponent = lazy(() => import('./components/Grocery'))
 
@@ -16,22 +20,25 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 
 
 
+
 const App = () => {
   const [name, setName] = useState("")
   return (
-    <UserContext.Provider value={{
-      loggedInUser: "Priyanka Nishad",
-      name,
-      setName
-    }}>
-      <div>
+    <Provider store={appStore}>
+      <UserContext.Provider value={{
+        loggedInUser: "Priyanka Nishad",
+        name,
+        setName
+      }}>
+        <div>
 
-        <Header />
+          <Header />
 
-        <Outlet />
-        <Footer />
-      </div>
-    </UserContext.Provider>
+          <Outlet />
+          <Footer />
+        </div>
+      </UserContext.Provider>
+    </Provider>
   );
 };
 function ErrorFallback() {
@@ -74,6 +81,12 @@ const appRouter = createBrowserRouter([
         <Suspense fallback={<h1>Loading...</h1>}>
           <GroceryLazyComponent />
         </Suspense>
+
+    },
+    {
+      path: "/cart",
+      element:
+        <Cart />
 
     }
     ]
