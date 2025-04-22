@@ -1,0 +1,15 @@
+// this is added because we are using parcel and parcel
+// already has babel and we have our own babel configaration
+// to avoid conflict we are adding this code.
+// babel.config.js file will be used
+
+
+{
+  "extends": "@parcel/config-default",
+  "transformers": {
+    "*.{js,mjs,jsx,cjs,ts,tsx}": [
+      "@parcel/transformer-js",
+      "@parcel/transformer-react-refresh-wrap"
+    ]
+  }
+}

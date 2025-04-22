@@ -8,7 +8,7 @@ import Contact from "./components/Contact";
 import RestaurantMenu from "./components/RestaurantMenu";
 import UserContext from "./context/UserContext";
 import Cart from './components/Cart';
-
+import DemoUseMemo from './components/Demo';
 // redux
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
@@ -87,8 +87,11 @@ const appRouter = createBrowserRouter([
       path: "/cart",
       element:
         <Cart />
-
-    }
+    },
+    {
+      path: "/demo",
+      element: <DemoUseMemo />,
+    },
     ]
   },
 

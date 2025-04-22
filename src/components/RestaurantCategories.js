@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import ItemList from './ItemList';
 
 function RestaurantCategories(props) {
+
   const { each, setActive, showItem } = props
   const [single, setSingle] = useState(showItem)
 
@@ -11,6 +12,7 @@ function RestaurantCategories(props) {
 
   return (
     <div>
+
       <div className="flex bg-gray-100 shadow-lg rounded-xl p-2  justify-between text-center mb-2 ">
         <span className="text-xl font-bold">{itemInfo?.title} ({itemInfo?.itemCards?.length || 0})</span>
         <span className='cursor-pointer' onClick={() => {

@@ -5,6 +5,7 @@ import useRestaurantMenu from '../hooks/useRestaurantMenu'
 import RestaurantCategories from './RestaurantCategories';
 
 const RestaurantMenu = () => {
+
   const { resId } = useParams()
   const [active, setActive] = useState(0)
   const { resInfo } = useRestaurantMenu(resId)

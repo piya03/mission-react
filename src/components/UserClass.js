@@ -24,7 +24,7 @@ class UserClass extends React.Component {
   }
   render() {
 
-    const { name, location, avatar_url } = this.state.userInfo
+    const { name, location = '', avatar_url } = this?.state?.userInfo || {}
     return (
       <div>
 

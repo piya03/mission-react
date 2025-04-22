@@ -53,3 +53,20 @@
 - Create a slice(cartSlice)
 - Dispatch(action)
 - Selector
+
+# type o testing
+
+- Unit Testing
+- Integration Testing
+- End to End Testing - e2e testing
+
+# Setting iu testing in our app
+
+- Install React Testing Library
+- Installed Jest
+- Installed Babel dependency
+- configure Parcel config file to disable default babel for - configration
+- Jest Configaration (npx jest --init)
+- install jest-environment-jsdom library
+
+- two underscore front and back known as dander**test**
